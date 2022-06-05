@@ -2,9 +2,8 @@
 <search>
   <entry>
     <title>这是我的第一篇博客</title>
-    <url>/2022/06/01/2022-5-4/</url>
-    <content><![CDATA[<p>欢迎你访问我的个人网站,这是一个基于Github Page和hexo搭建的网站,使用的是yilia-plus主题,个人不是很满意其中的一些设计,在接下来的时间里会对该主题进行魔改,当然,原则上要遵循简洁,简洁,简洁.</p>
-<span id="more"></span>
+    <url>/2022/05/04/2022-05-04/</url>
+    <content><![CDATA[<p>欢迎访问我的个人网站,这是一个基于Github Page和hexo搭建的网站,使用的是next主题,个人不是很满意其中的一些设计,在接下来的时间里会对该主题进行魔改,当然,原则上要遵循简约,简约以及简约.</p>
 <p>今后我会发些关于计算机、个人常玩游戏以及随思随想的博客,更新时间不定(尽量不犯懒….).</p>
 <p>我要给自己定个小目标,在接下来的半年里发够100篇文章,为了完成它,内容还会包括把以前的纸质笔记打一遍再发一次,发个”今天天气真好”水个文等等,所以理论上这个小目标还是很容易完成的.</p>
 ]]></content>
@@ -17,16 +16,66 @@
       </tags>
   </entry>
   <entry>
-    <title>再见</title>
-    <url>/2022/05/10/2022-6-4/</url>
-    <content><![CDATA[<p><img src="/../assets/img/cat.jpg" alt="avatar"><br>啊,朋友,再见了再见了再见了</p>
+    <title>Vue监视数据的原理</title>
+    <url>/2022/05/15/2022-05-15/</url>
+    <content><![CDATA[<p><strong>Vue会监视data中所有层次的数据</strong><br><strong>如何监测对象中的数据?</strong><br>通过setter实现监视，且要在new Vue时就传入要监测的数据</p>
+<ul>
+<li>对象中追加的属性，Vue默认不做响应式处理</li>
+<li>如需给后添加的属性做响应式，请使用如下API：<ul>
+<li>Vue.set(target,propertyName&#x2F;index,value)</li>
+<li>vm.$set(target,propertyName&#x2F;index,value)</li>
+</ul>
+</li>
+</ul>
+<p><strong>如何监测数组中的数据</strong><br>通过包裹数据更新元素的方法实现，本质就是做了两件事：</p>
+<ul>
+<li>调用原生对应的方法对数组进行更新</li>
+<li>重新解析模板，进而更新页面</li>
+</ul>
+<p><strong>在Vue中修改数组中的某个元素一定要用如下方法：</strong></p>
+<ol>
+<li>push()、pop()、shift()、unshift()、splice()、sort()、reverse()</li>
+<li>Vue.set()、vm.$set()    (备注：这两个不能给vm或vm的根数据对象添加属性)</li>
+</ol>
 ]]></content>
       <categories>
-        <category>随笔</category>
+        <category>前端</category>
       </categories>
       <tags>
-        <tag>博客</tag>
-        <tag>随笔</tag>
+        <tag>Vue</tag>
+        <tag>前端</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Vue的生命周期</title>
+    <url>/2022/05/10/2022-05-10/</url>
+    <content><![CDATA[<p><strong>总结</strong></p>
+<ol>
+<li>别名：生命周期回调函数、生命周期函数、生命周期钩子</li>
+<li>是什么：Vue在关键时刻调用的一些特殊名称的函数</li>
+<li>生命周期函数名称不可更改，但函数具体内容可以根据需求编些</li>
+<li>生命周期函数中的this指向是vm或组件实例对象</li>
+<li>常用的生命周期钩子<ol>
+<li>mounted：发送Ajax请求、启动定时器、绑定自定义事件、订阅消息等【初始化操作】</li>
+<li>beforeDestroy：清楚定时器、解绑自定义事件、取消订阅消息等【收尾工作】</li>
+</ol>
+</li>
+<li>关于销毁Vue实例<ol>
+<li>销毁后借助Vue开发者工具看不到任何信息</li>
+<li>销毁后自定义事件会失效，但原生DOM事件依然有效</li>
+<li>一般不会在beforeDestroy操作数据，因为即便操作数据，也不会再触发更新流程</li>
+</ol>
+</li>
+</ol>
+<p><strong>图示</strong></p>
+<p><img src="/../assets/img/lifecycle.svg" alt="lifecycle"></p>
+]]></content>
+      <categories>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>Vue</tag>
+        <tag>前端</tag>
       </tags>
   </entry>
 </search>
